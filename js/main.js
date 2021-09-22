@@ -83,10 +83,13 @@ const app = new Vue (
                     }
                 ],
             },
-        ]
+        ],
+        contactIndex: 0
     },
     methods: {
-
+        // changeProfileImage: function(index) {
+        //     this.avatar = index;
+        // }
     }
 }
 );

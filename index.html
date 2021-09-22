@@ -43,7 +43,7 @@
 
                     <div class="chats-container">
                         <ul>
-                            <li class="chat" v-for="(contact, index) in contacts" :key="index">
+                            <li class="chat" v-for="(contact, index) in contacts" :key="index" @click="contactIndex = index">
                                 <div class="contact-img">
                                     <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                                 </div>
@@ -56,13 +56,17 @@
                 </section>
 
                 <section class="main-chats-container">
-                    <div class="header-chat-message"></div>
-                    <div class="main-chat-message">
-                        <div class="sent-msg">
-                            Come va?
+                    <div class="header-chat-message">
+                        <div class="header-msg-information">
+                            <img src="" alt="">
                         </div>
-                        <div class="reciver-msg">
-                            Bene grazie
+                        <div class="header-msg-name">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="main-chat-message">
+                        <div v-for="(message, index) in contacts[contactIndex].messages" :class="message.status == `sent` ? `sent-msg` : `reciver-msg`">
+                            {{message.message}}
                         </div>
                     </div>
                     <div class="footer-chat-message">

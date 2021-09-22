@@ -15,7 +15,7 @@ body {
     display: grid;
     grid-template-columns: 4fr 9fr;
     margin: 2rem auto;
-    width: 41%;
+    width: 87.5rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 1rem 0.05rem rgb(0 0 0 / 20%);
 }
@@ -57,7 +57,7 @@ body {
 }
 
 .avatar-name > img {
-    height: 2.5rem;
+    height: 2.6rem;
     border-radius: 50%;
     cursor: pointer;
     margin-right: 0.625rem;
@@ -155,6 +155,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .main-chat-container {
     display: flex;
     flex-direction: column;
@@ -164,6 +165,13 @@ body {
     background-color: #eaeaea;
     height: 3.6875rem;
     padding: 0.625rem 1.25rem;
+}
+
+.header-msg-information img {
+    height: 2.6rem;
+    margin-right: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .main-chat-message {
