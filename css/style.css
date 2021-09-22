@@ -8,8 +8,8 @@
 body {
     font-family: 'Lato', sans-serif;
     height: 100vh;
-    background: rgb(215,219,214);
-    background: linear-gradient(0deg, rgba(215,219,214,1) 90%, rgba(0,150,136,1) 90%);
+    background: linear-gradient(to top, rgba(215,219,214,1) 90%, rgba(0,150,136,1) 90%);
+
 }
 
 .container {
@@ -137,9 +137,13 @@ body {
 }
 /** /Chats Section */
 /** Main Chats Section */
-.main-chats {
+.header-chat-message {
     background-color: #eaeaea;
     height: 4.5rem;
     padding: 0.625rem 1.25rem;
 }
 
+.main-chat-message {
+    background-image: url("../img/mine.jpg");
+    height: 20rem;
+}
