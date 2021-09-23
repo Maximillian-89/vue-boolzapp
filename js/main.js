@@ -84,12 +84,25 @@ const app = new Vue (
                 ],
             },
         ],
-        contactIndex: 0
+        contactIndex: null,
+        new_sent_msg: ""
     },
     methods: {
-        // changeProfileImage: function(index) {
-        //     this.avatar = index;
-        // }
+        sentMessage: function() {
+            if( this.new_sent_msg != "" ) {
+                
+                this.contacts[this.contactIndex].messages.push(
+                    {
+                        date: dayjs(),
+                        message: 'Si, ma preferirei andare al cinema',
+                        status: 'sent'
+                    }
+                );
+            }
+        }
     }
 }
 );
+
+
+dayjs().format('DD/MM/YYYY HH:mm:ss');

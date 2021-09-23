@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
         <title>vue-boolzapp</title>
@@ -44,11 +45,23 @@
                     <div class="chats-container">
                         <ul>
                             <li class="chat" v-for="(contact, index) in contacts" :key="index" @click="contactIndex = index">
-                                <div class="contact-img">
+                                <div class="contact-chat-left">
                                     <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                                 </div>
-                                <div class="contact-name">
-                                    <span>{{contact.name}}</span>
+                                <div class="contact-chat-right">
+                                    <div class="contact-chat-top">
+                                        <span>{{contact.name}}</span>
+                                        <span class="chat-time">14:09</span>
+                                    </div>
+                                    <div class="contact-chat-bottom">
+                                        <div class="contact-chat-bottom-left">
+                                            <span class="last-chat-message">ultimo messaggio scritto</span>
+                                        </div>
+                                        <div class="contact-chat-bottom-right">
+                                            <!-- <span>numero messaggi ricevuti con eventuale pallino verde</span> -->
+                                            <span>5</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -56,26 +69,61 @@
                 </section>
 
                 <section class="main-chats-container">
-                    <div class="header-chat-message">
-                        <div class="header-msg-information">
-                            <img src="" alt="">
+                    <div v-if="contactIndex != null" class="header-chat-message">
+                        <div v-if="contactIndex != null" class="header-msg-information-left">
+                            <img :src="`img/avatar${contacts[contactIndex].avatar}.jpg`" :alt="contacts[contactIndex].name">
+                            <div class="header-msg-name">
+                                <span>{{contacts[contactIndex].name}}</span>
+                            </div>
                         </div>
-                        <div class="header-msg-name">
-                            <span></span>
+
+                        <div class="header-msg-information-right">
+                            <img src="img/search-icon.svg" alt="Icona di Ricerca">
+                            <img src="img/menu-icon.svg" alt="Icona Menu">
                         </div>
                     </div>
-                    <div class="main-chat-message">
-                        <div v-for="(message, index) in contacts[contactIndex].messages" :class="message.status == `sent` ? `sent-msg` : `reciver-msg`">
-                            {{message.message}}
+
+                    <div class="intro-connection">
+                        <div v-if="contactIndex == null" class="bgd-no-selected">
+                            <div class="img-intro">
+                                <img src="img/intro-connection.jpg" alt="">
+                            </div>
+                            <div class="intro-title">
+                                <h1>Mantieni il telefono connesso</h1>
+                            </div>
+                            <div class="intro-description">
+                                <span>
+                                    WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati, collega il telefono al Wi-Fi.
+                                </span>
+                            </div>
+                            <div class="intro-version">
+                                <img class="color-filter-laptop" src="img/laptop-icon.svg" alt="">
+                                <span>
+                                    Chiama da desktop con WhatsApp per Windows. 
+                                    <a href="#">Scaricala qui</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div v-else v-for="(message, index) in contacts[contactIndex].messages" :class="message.status == `sent` ? `sent-msg` : `reciver-msg`">
+                            <span :class="message.status == `sent` ? `sent-msg-tail` : `receiver-msg-tail`">
+                                <img v-if="message.status == `sent`" src="img/message-tail-sender.svg" alt="">
+                                <img v-else src="img/message-tail-receiver.svg" alt="">
+                            </span>
+                            <span class="message-sent">{{message.message}}</span>
+                            <span class="msg-time">
+                                14:50
+                                <img v-if="message.status == `sent`" src="img/double-check-seen.svg" alt="Doppie virgolette">
+                            </span>
                         </div>
                     </div>
-                    <div class="footer-chat-message">
+
+                    <div v-if="contactIndex != null" class="footer-chat-message">
                         <div class="left-icon-text">
                             <img class="color-filter" src="img/emoji-icons.svg" alt="Icona Emoji">
                             <img class="color-filter" src="img/attach-icon.svg" alt="Icona Allega File">
                         </div>
                         <div class="text-message">
-                            <input type="text" placeholder="Scrivi un messaggio">
+                            <input v-model="new_sent_msg" @keyup.enter="sentMessage()" type="text" placeholder="Scrivi un messaggio">
                         </div>
                         <div class="right-icon-message">
                             <img class="color-filter" src="img/audio-icon.svg" alt="Icona Microfono">
@@ -84,7 +132,8 @@
                 </section>
             </div>
         </div>
-        
+
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
         <script src="js/main.js"></script>
     </body>
