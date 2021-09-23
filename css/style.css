@@ -16,7 +16,7 @@ body {
     grid-template-columns: 4fr 9fr;
     height: 90vh;
     margin: 2rem auto;
-    width: 87.375rem;
+    width: 92.375rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 1rem 0.05rem rgb(0 0 0 / 20%);
 }
@@ -253,7 +253,7 @@ body {
 }
 
 .intro-connection {
-    padding: 6rem 10rem 6rem 10rem;
+    padding: 6rem 5rem 6rem 5rem;
     background-color: #f8f9fa;
     border-bottom: 7px solid rgb(74, 223, 131);
     overflow-y: hidden;
@@ -332,13 +332,17 @@ body {
 
 .message-sent {
     font-size: 1rem;
-    margin-right: 3rem;
+    margin-right: 5rem;
+    word-wrap: break-word;
 }
 
 .msg-time {
     color: rgb(145, 145, 145);
     font-size: .75rem;
     vertical-align: sub;
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
 }
 
 .msg-time img {
@@ -369,6 +373,8 @@ body {
     border-radius: 0.5rem;
     padding: 0.8rem 1rem;
     margin-bottom: 0.3rem;
+    max-width: 24.375rem;
+    position: relative;
 }
 /** /Main Chats Section */
 .footer-chat-message {
