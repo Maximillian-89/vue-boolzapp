@@ -94,15 +94,22 @@ const app = new Vue (
                 this.contacts[this.contactIndex].messages.push(
                     {
                         date: dayjs(),
-                        message: 'Si, ma preferirei andare al cinema',
+                        message: this.new_sent_msg,
                         status: 'sent'
                     }
                 );
+            }
+        },
+
+        changeBgd: function() {
+            if( this.contactIndex == null ) {
+                
+            } else {
+                return "main-chat-message"
             }
         }
     }
 }
 );
-
 
 dayjs().format('DD/MM/YYYY HH:mm:ss');
