@@ -102,14 +102,14 @@ const app = new Vue (
                 this.new_sent_msg = "";
 
                 setTimeout(
-                    () => {
+                    () => { //**? Qui usiamo l'arrow function perchè il "this" altrimenti farre capo a windows, e non a vue.
                         this.contacts[this.contactIndex].messages.push(
                             {
                                 date: timeNow,
                                 message: 'ok',
                                 status: 'recived'
-                            }, 1000);
-                    }
+                            });
+                    }, 1000
                 );
             }
         },

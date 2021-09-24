@@ -26,7 +26,7 @@ body {
 }
 
 .color-filter {
-    filter: invert(36%) sepia(7%) saturate(497%) hue-rotate(158deg) brightness(89%) contrast(92%);
+    filter: invert(33%) sepia(9%) saturate(444%) hue-rotate(158deg) brightness(91%) contrast(84%);
 }
 
 .color-filter-laptop {
@@ -320,7 +320,9 @@ body {
 
 .sent-msg, .reciver-msg {
     border-radius: 0.5rem;
+    border-top-right-radius: 0;
     padding: 0.8rem 1rem;
+    max-width: 24.375rem;
     margin-bottom: 0.3rem;
     position: relative;
 }
@@ -362,19 +364,15 @@ body {
 }
 
 .sent-msg-tail {
-    right: -0.7rem;
+    right: -0.75rem;
+}
+
+.sent-msg-tail img {
+    width: .75rem;
 }
 
 .receiver-msg-tail {
     left: -0.4rem;
-}
-
-.sent-msg, .reciver-msg {
-    border-radius: 0.5rem;
-    padding: 0.8rem 1rem;
-    margin-bottom: 0.3rem;
-    max-width: 24.375rem;
-    position: relative;
 }
 /** /Main Chats Section */
 .footer-chat-message {
