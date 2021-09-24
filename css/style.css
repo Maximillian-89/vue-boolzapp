@@ -320,7 +320,6 @@ body {
 
 .sent-msg, .reciver-msg {
     border-radius: 0.5rem;
-    border-top-right-radius: 0;
     padding: 0.8rem 1rem;
     max-width: 24.375rem;
     margin-bottom: 0.3rem;
@@ -330,6 +329,7 @@ body {
 .sent-msg {
     background: rgb(220, 248, 198);
     align-self: flex-end;
+    border-top-right-radius: 0;
 }
 
 .message-sent {
@@ -354,6 +354,7 @@ body {
 .reciver-msg {
     background: #fff;
     align-self: flex-start;
+    border-top-left-radius: 0;
 }
 
 .receiver-msg-tail, .sent-msg-tail {
@@ -372,7 +373,11 @@ body {
 }
 
 .receiver-msg-tail {
-    left: -0.4rem;
+    left: -0.75rem;
+}
+
+.receiver-msg-tail img {
+    width: .75rem;
 }
 /** /Main Chats Section */
 .footer-chat-message {
