@@ -243,7 +243,7 @@ body {
 .main-chat-message, .intro-connection {
     display: flex;
     flex-direction: column;
-    padding: 10rem 10rem 6rem 10rem;
+    padding: 3rem 5rem 0rem 5rem;
     flex-grow: 3;
     overflow-y: scroll;
 }
@@ -255,7 +255,7 @@ body {
 .intro-connection {
     padding: 6rem 5rem 6rem 5rem;
     background-color: #f8f9fa;
-    border-bottom: 7px solid rgb(74, 223, 131);
+    border-bottom: .4375rem solid rgb(74, 223, 131);
     overflow-y: hidden;
 }
 
@@ -315,7 +315,7 @@ body {
 .intro-version a {
     color: rgb(10, 165, 69);
     text-decoration: none;
-    margin-left: 2px;
+    margin-left: .125rem;
 }
 
 .sent-msg, .reciver-msg {
@@ -341,8 +341,8 @@ body {
     font-size: .75rem;
     vertical-align: sub;
     position: absolute;
-    right: 5px;
-    bottom: 3px;
+    right: .3125rem;
+    bottom: .1875rem;
 }
 
 .msg-time img {

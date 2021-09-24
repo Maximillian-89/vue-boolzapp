@@ -89,13 +89,26 @@ const app = new Vue (
     },
     methods: {
         sentMessage: function() {
+            let timeNow = dayjs().format('HH:mm');
             if( this.new_sent_msg != "" ) {
                 
                 this.contacts[this.contactIndex].messages.push(
                     {
-                        date: dayjs(),
+                        date: timeNow,
                         message: this.new_sent_msg,
-                        status: 'sent'
+                        status: 'sent',
+                    }
+                );
+                this.new_sent_msg = "";
+
+                setTimeout(
+                    () => {
+                        this.contacts[this.contactIndex].messages.push(
+                            {
+                                date: timeNow,
+                                message: 'ok',
+                                status: 'recived'
+                            }, 1000);
                     }
                 );
             }
@@ -103,13 +116,13 @@ const app = new Vue (
 
         changeBgd: function() {
             if( this.contactIndex == null ) {
-                
+                return "intro-connection";
             } else {
-                return "main-chat-message"
+                return "main-chat-message";
             }
         }
     }
 }
 );
 
-dayjs().format('DD/MM/YYYY HH:mm:ss');
+dayjs().format('HH:mm');

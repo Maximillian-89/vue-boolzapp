@@ -83,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div :class="changeBgd()">
+                    <div :class="changeBgd()" v-chat-scroll="{smooth: true}">
                         <div v-if="contactIndex == null" class="bgd-no-selected">
                             <div class="img-intro">
                                 <img src="img/intro-connection.jpg" alt="">
@@ -111,7 +111,7 @@
                             </span>
                             <span class="message-sent">{{message.message}}</span>
                             <span class="msg-time">
-                                14:50
+                                {{message.date}}
                                 <img v-if="message.status == `sent`" src="img/double-check-seen.svg" alt="Doppie virgolette">
                             </span>
                         </div>
@@ -132,9 +132,9 @@
                 </section>
             </div>
         </div>
-
         <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
