@@ -11,11 +11,13 @@ const app = new Vue (
                     {
                         date: '15:30',
                         message: 'Hai portato a spasso il cane?',
+                        oldMsg: true,
                         status: 'sent'
                     },
                     {
                         date: '15:50',
                         message: 'Ricordati di dargli da mangiare',
+                        oldMsg: true,
                         status: 'sent'
                     },
                     {
@@ -32,6 +34,7 @@ const app = new Vue (
                 messages: [{
                     date: '16:30',
                     message: 'Ciao come stai?',
+                    oldMsg: true,
                     status: 'sent'
                 },
                     {
@@ -56,8 +59,9 @@ const app = new Vue (
                     status: 'received'
                 },
                     {
-                        date: '210:20',
+                        date: '10:20',
                         message: 'Sicuro di non aver sbagliato chat?',
+                        oldMsg: true,
                         status: 'sent'
                     },
                     {
@@ -74,6 +78,7 @@ const app = new Vue (
                 messages: [{
                     date: '15:30',
                     message: 'Lo sai che ha aperto una nuova pizzeria?',
+                    oldMsg: true,
                     status: 'sent'
                 },
                     {
@@ -85,7 +90,9 @@ const app = new Vue (
             },
         ],
         contactIndex: null,
-        new_sent_msg: ""
+        messageIndex: 0,
+        new_sent_msg: "",
+        tailSent: "img/double-check-unseen.svg"
     },
     methods: {
         sentMessage: function() {
@@ -96,22 +103,38 @@ const app = new Vue (
                     {
                         date: timeNow,
                         message: this.new_sent_msg,
-                        status: 'sent',
+                        oldMsg: false,
+                        status: 'sent'
                     }
                 );
-                this.new_sent_msg = "";
-
+                this.new_sent_msg = ""
+                
                 setTimeout(
-                    () => { //**? Qui usiamo l'arrow function perchè il "this" altrimenti farre capo a windows, e non a vue.
+                    () => { //**? Qui usiamo l'arrow function perchè il "this" altrimenti farà capo a windows, e non a vue.
                         this.contacts[this.contactIndex].messages.push(
                             {
                                 date: timeNow,
                                 message: 'ok',
+                                oldMsg: false,
                                 status: 'recived'
                             });
-                    }, 1000
+                    }, 5000
+                );
+                setTimeout(
+                    () => { //**? Qui usiamo l'arrow function perchè il "this" altrimenti farà capo a windows, e non a vue.
+                        this.tailSent="img/double-check-seen.svg"
+                    }, 3000
+                );
+
+                setTimeout(
+                    () => { //**? Qui usiamo l'arrow function perchè il "this" altrimenti farà capo a windows, e non a vue.
+                        this.contacts[this.contactIndex].messages.forEach((message) => { 
+                            if(message.oldMsg == false) message.oldMsg = true;
+                        });
+                    }, 5000
                 );
             }
+            this.tailSent = "img/double-check-unseen.svg"
         },
 
         changeBgd: function() {
@@ -120,8 +143,18 @@ const app = new Vue (
             } else {
                 return "main-chat-message";
             }
-        }
-    }
+        },
+
+        searchContacts() {
+			this.contacts.forEach((element) => {
+				if(element.name.toLowerCase().includes(this.searchContact.toLowerCase())) {
+					element.visible = true;
+				} else {
+					element.visible = false;
+				}
+			});
+		}
+    },
 }
 );
 

@@ -38,13 +38,13 @@
                     <div class="search-chat">
                         <div class="search-chat-contain">
                             <img src="img/search-icon.svg" alt="Icona di ricerca chat">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchContact" @keyup="searchContacts()">
                         </div>
                     </div>
 
                     <div class="chats-container">
                         <ul>
-                            <li class="chat" v-for="(contact, index) in contacts" :key="index" @click="contactIndex = index">
+                            <li class="chat" v-for="(contact, index) in contacts" :key="index" @click="contactIndex = index" v-if="contact.visible">
                                 <div class="contact-chat-left">
                                     <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                                 </div>
@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="contact-chat-bottom">
                                         <div class="contact-chat-bottom-left">
-                                            <span class="last-chat-message">ultimo messaggio scritto</span>
+                                            <span class="last-chat-message">ultimo messaggio</span>
                                         </div>
                                         <div class="contact-chat-bottom-right">
                                             <!-- <span>numero messaggi ricevuti con eventuale pallino verde</span> -->
@@ -112,7 +112,8 @@
                             <span class="message-sent">{{message.message}}</span>
                             <span class="msg-time">
                                 {{message.date}}
-                                <img v-if="message.status == `sent`" src="img/double-check-seen.svg" alt="Doppie virgolette">
+                                <img v-if="message.status == `sent` && message.oldMsg == true" src="img/double-check-seen.svg" alt="Doppie virgolette blue">
+                                <img v-else-if="message.status == `sent` && message.oldMsg == false" :src="tailSent" alt="Doppie virgolette grigia">
                             </span>
                         </div>
                     </div>
